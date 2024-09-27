@@ -1,0 +1,6 @@
+let COOKIE_ACCEPT_NAME="COOKIE-CONSENTS-IS-ACCEPTED";let isCookieConsentsAccepted=function(){return!!getCookie(COOKIE_ACCEPT_NAME)};let cookiesAlert=document.querySelector(".cookies-alert-block");let cookiesAlertBtn=document.querySelector(".cookies-alert-accept-btn");cookiesAlert.style.display=isCookieConsentsAccepted()?"none":"block";function getCookie(name){let cookiename=name+"=";let ca=document.cookie.split(";");for(let i=0;i<ca.length;i++){let c=ca[i];while(c.charAt(0)==" ")c=c.substring(1,c.length);if(c.indexOf(cookiename)==0)
+    return c.substring(cookiename.length,c.length)}
+    return null}
+    function setCookie(name,value){var expires,days=365;if(days){let date=new Date();date.setTime(date.getTime()+days*24*60*60*1000);expires="; expires="+date.toGMTString()}else{expires=""}
+    document.cookie=encodeURIComponent(name)+"="+encodeURIComponent(value)+expires+"; path=/"}
+    cookiesAlertBtn.addEventListener("click",function(){setCookie(COOKIE_ACCEPT_NAME,"1");cookiesAlert.style.display="none"},!1)
